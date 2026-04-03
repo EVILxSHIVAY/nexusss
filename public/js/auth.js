@@ -55,7 +55,7 @@ async function handleLogin(e) {
     }
 
     showBanner('Signed in! Redirecting...', 'success');
-    setTimeout(() => window.location.href = '/dashboard', 600);
+    setTimeout(() => window.location.href = '/dashboard.html', 600);
 
   } catch (err) {
     showBanner('Network error. Is the server running?');
