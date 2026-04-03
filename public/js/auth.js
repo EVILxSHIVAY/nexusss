@@ -1,3 +1,5 @@
+const BASE_URL = "https://nexus-backend-6b8m.onrender.com";
+
 function showBanner(msg, type = 'error') {
   const el = document.getElementById('banner');
   el.textContent  = msg;
@@ -36,11 +38,14 @@ async function handleLogin(e) {
   const password = document.getElementById('login-password').value;
 
   try {
-    const res  = await fetch('/api/auth/login', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ email, password })
-    });
+    const res  = await fetch(`${BASE_URL}/api/auth/login`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  credentials: 'include',
+  body: JSON.stringify({ email, password })
+});
     const data = await res.json();
 
     if (!res.ok) {
@@ -80,10 +85,11 @@ async function handleSignup(e) {
   }
 
   try {
-    const res  = await fetch('/api/auth/signup', {
+    const res  = await fetch(`${BASE_URL}/api/auth/signup`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ name, email, password })
+      body:    JSON.stringify({ name, email, password }),
+      credentials: 'include'
     });
     const data = await res.json();
 

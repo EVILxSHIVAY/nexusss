@@ -32,7 +32,9 @@ const App = (() => {
   }
 
   function connectSocket() {
-    socket = io({ transports: ['websocket', 'polling'] });
+    socket = io("https://nexus-backend-6b8m.onrender.com", {
+  transports: ["websocket", "polling"]
+});
     WebRTC.init(socket);
 
     socket.on('connect', () => {
